@@ -48,6 +48,11 @@ final class DropboxMetadataHeaderCatcher
             return strlen($header);
         }
 
+        // Ignore empty headers.
+        if (strlen($header) === 0) {
+            return strlen($header);
+        }
+
         // case-insensitive starts-with check.
         if (\substr_compare($header, "x-dropbox-metadata:", 0, 19, true) !== 0) {
             return strlen($header);
